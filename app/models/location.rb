@@ -3,6 +3,7 @@ class Location < ActiveRecord::Base
   has_many :people
 
   def self.in_region(region)
-    all
+    joins(:region).where(regions: { name: region })
+    # if it's in the regoin in should return truw. 
   end
 end
